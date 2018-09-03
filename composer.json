@@ -1,0 +1,19 @@
+{
+    "name": "rockschtar/wordpress-metarevisions",
+    "description": "Library to add post-meta data to revisions",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stefan Helmer",
+            "email": "rockschtar@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Rockschtar\\WordPress\\MetaRevisions\\": "src/",
+            "Rockschtar\\WordPress\\MetaRevisions\\Tests\\": "tests/"
+        }
+    }
+}
