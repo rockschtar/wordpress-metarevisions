@@ -12,12 +12,12 @@ WordPress [Must Use Plugin](https://codex.wordpress.org/Must_Use_Plugins). Enabl
 # Install
 
 ```
-composer require rockschtar/wordpress-metarevision
+composer require rockschtar/wordpress-metarevisions
 ```
 
 # License
 
-rockschtar/wordpress-metarevision is open source and released under MIT license. See LICENSE.md file for more info.
+rockschtar/wordpress-metarevisions is open source and released under MIT license. See LICENSE.md file for more info.
 
 ## Usage
 
