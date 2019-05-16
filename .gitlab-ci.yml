@@ -11,7 +11,7 @@ before_script:
 
 .build: &build
   stage: build
-  before_script:
+  script:
     - 'sed -i "s/Version:.*$/Version: ${CI_COMMIT_TAG:-${CI_COMMIT_SHA:0:8}} /" wordpress-metarevisions.php'
   artifacts: &artifacts
     name: $CI_PROJECT_NAME-${CI_COMMIT_TAG:-${CI_COMMIT_SHA:0:8}}
