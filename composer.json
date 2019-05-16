@@ -1,6 +1,6 @@
 {
     "name": "rockschtar/wordpress-metarevisions",
-    "description": "Library to add post-meta data to revisions",
+    "description": "Library for use with roots/bedrock based WordPress projects. Enables meta-data revisions.",
     "type": "library",
     "license": "MIT",
     "authors": [
