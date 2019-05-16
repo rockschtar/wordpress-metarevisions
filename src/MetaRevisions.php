@@ -27,7 +27,7 @@ class MetaRevisions {
     final public function revision_fields_display_callbacks(): void {
         $field_callbacks = apply_filters('rswpmr_revision_meta_fields_callbacks', array());
 
-        foreach($field_callbacks as $field_callback) {
+        foreach ($field_callbacks as $field_callback) {
             $filter = '_wp_post_revision_field_' . $field_callback['field'];
             $callback = $field_callback['callback'];
             add_filter($filter, $callback, 10, 2);
@@ -47,7 +47,7 @@ class MetaRevisions {
             return;
         }
 
-        foreach($fields as $meta_key => $meta_title) {
+        foreach ($fields as $meta_key => $meta_title) {
             $meta_value = get_post_meta($post_id, $meta_key, true);
             add_metadata('post', $revision_id, $meta_key, $meta_value);
         }
@@ -59,7 +59,7 @@ class MetaRevisions {
         $meta_fields = apply_filters('rswpmr_revision_meta_fields', array());
         $meta_fields = $meta_fields[$post_type];
 
-        foreach($meta_fields as $meta_key => $meta_title) {
+        foreach ($meta_fields as $meta_key => $meta_title) {
 
             if (isset($posted_data[$meta_key]) && get_post_meta($new_autosave['ID'], $meta_key, true) !== wp_unslash($posted_data[$meta_key])) {
                 delete_metadata('post', $new_autosave['ID'], $meta_key);
@@ -77,7 +77,7 @@ class MetaRevisions {
         $metas_revisioned = $revision_meta_fields[$partent_post_type];
 
         if ($metas_revisioned !== null && 0 !== \count($metas_revisioned)) {
-            foreach($metas_revisioned as $meta_key => $meta_title) {
+            foreach ($metas_revisioned as $meta_key => $meta_title) {
                 // Clear any existing metas
                 delete_post_meta($post_id, $meta_key);
                 // Get the stored meta, not stored === blank
@@ -96,9 +96,7 @@ class MetaRevisions {
         $revision_meta_fields = apply_filters('rswpmr_revision_meta_fields', array());
         $fields = $revision_meta_fields[$post_type];
 
-
-        /** @noinspection ForeachInvariantsInspection */
-        while (list($key, $val) = each($fields)) {
+        foreach ($fields as $key => $val) {
             if (get_post_meta($post->ID, $key) !== get_post_meta($last_revision->ID, $key)) {
                 $post_has_changed = true;
                 break;
@@ -114,10 +112,8 @@ class MetaRevisions {
         $revision_meta_fields = apply_filters('rswpmr_revision_meta_fields', array());
         $meta_fields = $revision_meta_fields[$post_type];
 
-
-        /** @noinspection ForeachInvariantsInspection */
-        while (list($key, $val) = each($meta_fields)) {
-            $fields[$key] = $val;
+        foreach ($meta_fields as $key => $value) {
+            $fields[$key] = $value;
         }
 
         return $fields;
