@@ -1,7 +1,7 @@
 {
     "name": "rockschtar/wordpress-metarevisions",
     "description": "Library for use with roots/bedrock based WordPress projects. Enables meta-data revisions.",
-    "type": "library",
+  "type": "wordpress-muplugin",
     "license": "MIT",
     "authors": [
         {
@@ -9,7 +9,9 @@
             "email": "rockschtar@gmail.com"
         }
     ],
-    "require": {},
+  "require": {
+    "php": ">=7.1"
+  },
     "autoload": {
         "psr-4": {
             "Rockschtar\\WordPress\\MetaRevisions\\": "src/",
