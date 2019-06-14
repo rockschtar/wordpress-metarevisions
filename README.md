@@ -40,5 +40,5 @@ This library allows you to store changes in post meta fields to the built in Wor
 
 # Question? Issues?
 
-rockschtar/wordpress-cronjob is hosted on GitLab. Feel free to open issues there for suggestions, questions and real issues.
+rockschtar/wordpress-metarevisions is hosted on GitHub. Feel free to open issues there for suggestions, questions and real issues.
     
