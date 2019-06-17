@@ -8,3 +8,8 @@ install:
   - travis_retry composer install --no-interaction --no-suggest
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
+
+after_success:
+  - curl --ftp-create-dirs
+    -T filename
+    sftp://${SFTP_USER}:${SFTP_PASSWORD}@eracer.de/mr
