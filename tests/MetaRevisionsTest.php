@@ -9,6 +9,10 @@ use Rockschtar\WordPress\MetaRevisions\MetaRevisions;
 use function Brain\Monkey\setUp;
 use function Brain\Monkey\tearDown;
 
+/**
+ * Class MetaRevisionsTest
+ * @package Rockschtar\WordPress\MetaRevisions\Tests
+ */
 class MetaRevisionsTest extends TestCase {
     public function setUp(): void {
         parent::setUp();
@@ -21,6 +25,9 @@ class MetaRevisionsTest extends TestCase {
         parent::tearDown();
     }
 
+    /**
+     * @covers \Rockschtar\WordPress\MetaRevisions\MetaRevisions::init
+     */
     public function testHooksAdded(): void {
         $metaRevisions = MetaRevisions::init();
         self::assertTrue(has_action('admin_init', [$metaRevisions, 'revision_fields_display_callbacks']));
