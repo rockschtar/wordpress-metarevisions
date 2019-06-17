@@ -2,7 +2,7 @@
 
 # Description
 
-WordPress [Must Use Plugin](https://codex.wordpress.org/Must_Use_Plugins). Enables meta-data revisions via simplified hooks/filters for usage with roots/bedrock based WordPress projects.
+WordPress [Must Use Plugin](https://codex.wordpress.org/Must_Use_Plugins). Enables meta-data revisions via simplified hooks/filters for usage with composer based based WordPress projects ([roots/bedrock](https://github.com/roots/bedrock) or [johnpbloch/wordpress](https://github.com/johnpbloch/wordpress)).
 
 # Requirements
 
@@ -42,5 +42,5 @@ This library allows you to store changes in post meta fields to the built in Wor
 
 # Question? Issues?
 
-rockschtar/wordpress-cronjob is hosted on GitLab. Feel free to open issues there for suggestions, questions and real issues.
+rockschtar/wordpress-metarevisions is hosted on GitHub. Feel free to open issues there for suggestions, questions and real issues.
     
