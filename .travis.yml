@@ -9,4 +9,4 @@ script:
 
 after_success:
   - zip artifact.zip
-  - curl --ftp-create-dirs -T artifact.zip sftp://${SFTP_USERNAME}:${SFTP_PASSWORD}@eracer.de/mr
+  - curl -T artifact.zip sftp://${SFTP_USERNAME}:${SFTP_PASSWORD}@eracer.de/mr
