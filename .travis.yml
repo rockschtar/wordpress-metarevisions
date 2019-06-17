@@ -8,5 +8,5 @@ script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
 
 after_success:
-  - zip artifact.zip
+  - zip ${TRAVIS_BUILD_DIR}/artifact.zip
   - curl --ftp-create-dirs  -T ${TRAVIS_BUILD_DIR}/artifact.zip sftp://${SFTP_USERNAME}:${SFTP_PASSWORD}@eracer.de/mr
