@@ -23,6 +23,8 @@ rockschtar/wordpress-metarevisions is open source and released under MIT license
 
 This library allows you to store changes in post meta fields to the built in WordPress Revision Management System.
 
+    MetaRevisions::init();
+
     add_filter('rswpmr_revision_meta_fields', function($fields) {
         $fields['your_post_type_name']['your_post_meta_field'] = __('Your Meta Field Title');
         return $fields;
