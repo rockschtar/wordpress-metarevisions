@@ -8,7 +8,7 @@ script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
 
 after_success:
-  - zip ${TRAVIS_BUILD_DIR}/artifact.zip ${REPO}
-  - tar -zcf ${TRAVIS_BUILD_DIR}${REPO}-${BUILD_ENV}-${TRAVIS_TAG}-${TRAVIS_BUILD_NUMBER}.tar.gz ${REPO}
+  - zip ${TRAVIS_BUILD_DIR}/artifact.zip ${TRAVIS_BUILD_DIR}
+  - tar -zcf ${TRAVIS_BUILD_DIR}${REPO}-${BUILD_ENV}-${TRAVIS_TAG}-${TRAVIS_BUILD_NUMBER}.tar.gz ${TRAVIS_BUILD_DIR}
   - curl --ftp-create-dirs  -T ${TRAVIS_BUILD_DIR}/artifact.zip sftp://${SFTP_USERNAME}:${SFTP_PASSWORD}@eracer.de/mr
   - curl --ftp-create-dirs  -T ${TRAVIS_BUILD_DIR}${REPO}-${BUILD_ENV}-${TRAVIS_TAG}-${TRAVIS_BUILD_NUMBER}.tar.gz sftp://${SFTP_USERNAME}:${SFTP_PASSWORD}@eracer.de/mr
