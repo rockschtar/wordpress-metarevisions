@@ -12,4 +12,4 @@ script:
 after_success:
   - curl --ftp-create-dirs
     -T filename
-    sftp://${SFTP_USER}:${SFTP_PASSWORD}@eracer.de/mr
+    sftp://${SFTP_USERNAME}:${SFTP_PASSWORD}@eracer.de/mr
