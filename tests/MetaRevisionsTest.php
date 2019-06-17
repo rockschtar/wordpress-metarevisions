@@ -25,10 +25,8 @@ class MetaRevisionsTest extends TestCase {
         $metaRevisions = MetaRevisions::init();
         self::assertTrue(has_action('admin_init', [$metaRevisions, 'revision_fields_display_callbacks']));
         self::assertTrue(has_action('_wp_put_post_revision', [$metaRevisions, '_wp_save_revisioned_meta_fields']));
-        self::assertTrue(has_action('wp_creating_autosave', [$metaRevisions,
-                                                             '_wp_autosave_post_revisioned_meta_fields']));
-        self::assertTrue(has_action('wp_before_creating_autosave', [$metaRevisions,
-                                                                    '_wp_autosave_post_revisioned_meta_fields']));
+        self::assertTrue(has_action('wp_creating_autosave', [$metaRevisions, '_wp_autosave_post_revisioned_meta_fields']));
+        self::assertTrue(has_action('wp_before_creating_autosave', [$metaRevisions, '_wp_autosave_post_revisioned_meta_fields']));
         self::assertTrue(has_action('wp_restore_post_revision', [$metaRevisions, '_wp_restore_post_revision_meta']));
     }
 
