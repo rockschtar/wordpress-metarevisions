@@ -5,6 +5,10 @@
 
 namespace Rockschtar\WordPress\MetaRevisions;
 
+/**
+ * Class MetaRevisions
+ * @package Rockschtar\WordPress\MetaRevisions
+ */
 class MetaRevisions {
     private function __construct() {
         add_action('admin_init', array($this, 'revision_fields_display_callbacks'));
@@ -16,6 +20,9 @@ class MetaRevisions {
         add_action('wp_restore_post_revision', array($this, '_wp_restore_post_revision_meta'), 10, 2);
     }
 
+    /**
+     * @return static
+     */
     public static function &init() {
         static $instance = false;
         if (!$instance) {
