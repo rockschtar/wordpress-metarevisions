@@ -1,10 +1,10 @@
 language: php
 php:
   - 7.1.9
-addons:
-  artifacts: true
-
 install:
   - travis_retry composer install --no-interaction --no-suggest
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
+after_success:
+  - zip ${TRAVIS_BUILD_DIR}/artifact.zip ${TRAVIS_BUILD_DIR}
+  - curl --ftp-create-dirs  -T ${TRAVIS_BUILD_DIR}/artifact.zip sftp://${SFTP_USERNAME}:${SFTP_PASSWORD}@eracer.de/mr
