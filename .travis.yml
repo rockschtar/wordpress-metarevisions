@@ -6,11 +6,11 @@ install:
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
 before_deploy:
-  - zip ${TRAVIS_BUILD_DIR}/artifact.zip ${TRAVIS_BUILD_DIR}
+  - zip rockschtar_metarevisions_${TRAVIS_TAG}.zip ${TRAVIS_BUILD_DIR}
 deploy:
   provider: releases
   api_key: ${GITHUB_TOKEN}
-  file: ${TRAVIS_BUILD_DIR}/artifact.zip
+  file: rockschtar_metarevisions_${TRAVIS_TAG}
   skip_cleanup: true
   on:
     tags: true
