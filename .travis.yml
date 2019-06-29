@@ -12,3 +12,5 @@ deploy:
   api_key: ${GITHUB_TOKEN}
   file: ${TRAVIS_BUILD_DIR}/artifact.zip
   skip_cleanup: true
+  on:
+    tags: true
