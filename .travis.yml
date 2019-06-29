@@ -5,6 +5,12 @@ install:
   - travis_retry composer install --no-interaction --no-suggest
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
-after_success:
+before_deploy:
   - zip ${TRAVIS_BUILD_DIR}/artifact.zip ${TRAVIS_BUILD_DIR}
-  - curl --ftp-create-dirs  -T ${TRAVIS_BUILD_DIR}/artifact.zip sftp://${SFTP_USERNAME}:${SFTP_PASSWORD}@eracer.de/mr
+deploy:
+  provider: releases
+  api_key: ${GITHUB_TOKEN}
+  file: ${TRAVIS_BUILD_DIR}/artifact.zip
+  skip_cleanup: true
+  on:
+    tags: true
