@@ -101,6 +101,11 @@ class MetaRevisions {
     final public function _wp_check_revisioned_meta_fields_have_changed($post_has_changed, \WP_Post $last_revision, \WP_Post $post): bool {
         $post_type = get_post_type($post->ID);
         $revision_meta_fields = apply_filters('rswpmr_revision_meta_fields', array());
+
+        if (!array_key_exists($post_type, $revision_meta_fields)) {
+            return $post_has_changed;
+        }
+
         $fields = $revision_meta_fields[$post_type];
 
         foreach ($fields as $key => $val) {
