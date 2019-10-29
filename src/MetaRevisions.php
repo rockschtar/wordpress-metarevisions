@@ -117,6 +117,11 @@ class MetaRevisions {
         $post_type = $autosave['post_type'];
 
         $revision_meta_fields = apply_filters('rswpmr_revision_meta_fields', array());
+
+        if (!array_key_exists($post_type, $revision_meta_fields)) {
+            return $fields;
+        }
+
         $meta_fields = $revision_meta_fields[$post_type];
 
         foreach ($meta_fields as $key => $value) {
