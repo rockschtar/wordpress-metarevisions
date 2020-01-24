@@ -9,8 +9,10 @@ namespace Rockschtar\WordPress\MetaRevisions;
  * Class MetaRevisions
  * @package Rockschtar\WordPress\MetaRevisions
  */
-class MetaRevisions {
-    private function __construct() {
+class MetaRevisions
+{
+    private function __construct()
+    {
         add_action('admin_init', array($this, 'revision_fields_display_callbacks'));
         add_action('_wp_put_post_revision', array($this, '_wp_save_revisioned_meta_fields'));
         add_filter('wp_save_post_revision_post_has_changed', array($this, '_wp_check_revisioned_meta_fields_have_changed'), 10, 3);
@@ -23,7 +25,8 @@ class MetaRevisions {
     /**
      * @return static
      */
-    public static function &init() {
+    public static function &init()
+    {
         static $instance = false;
         if (!$instance) {
             $instance = new self();
@@ -31,7 +34,8 @@ class MetaRevisions {
         return $instance;
     }
 
-    final public function revision_fields_display_callbacks(): void {
+    final public function revision_fields_display_callbacks(): void
+    {
         $field_callbacks = apply_filters('rswpmr_revision_meta_fields_callbacks', array());
 
         foreach ($field_callbacks as $field_callback) {
@@ -41,7 +45,8 @@ class MetaRevisions {
         }
     }
 
-    final public function _wp_save_revisioned_meta_fields($revision_id): void {
+    final public function _wp_save_revisioned_meta_fields($revision_id): void
+    {
         $revision = get_post($revision_id);
         $post_id = $revision->post_parent;
 
@@ -60,24 +65,29 @@ class MetaRevisions {
         }
     }
 
-    final public function _wp_autosave_post_revisioned_meta_fields($new_autosave): void {
+    final public function _wp_autosave_post_revisioned_meta_fields($new_autosave): void
+    {
         $posted_data = isset($_POST['data']) ? $_POST['data']['wp_autosave'] : $_POST;
         $post_type = $posted_data['post_type'];
         $meta_fields = apply_filters('rswpmr_revision_meta_fields', array());
         $meta_fields = $meta_fields[$post_type];
 
-        foreach ($meta_fields as $meta_key => $meta_title) {
-
-            if (isset($posted_data[$meta_key]) && get_post_meta($new_autosave['ID'], $meta_key, true) !== wp_unslash($posted_data[$meta_key])) {
-                delete_metadata('post', $new_autosave['ID'], $meta_key);
-                if (!empty($posted_data[$meta_key])) {
-                    add_metadata('post', $new_autosave['ID'], $meta_key, $posted_data[$meta_key]);
+        if (is_array($meta_fields)) {
+            foreach ($meta_fields as $meta_key => $meta_title) {
+                if (isset($posted_data[$meta_key]) && get_post_meta($new_autosave['ID'], $meta_key, true) !== wp_unslash($posted_data[$meta_key])) {
+                    delete_metadata('post', $new_autosave['ID'], $meta_key);
+                    if (!empty($posted_data[$meta_key])) {
+                        add_metadata('post', $new_autosave['ID'], $meta_key, $posted_data[$meta_key]);
+                    }
                 }
             }
         }
+
+
     }
 
-    public function _wp_restore_post_revision_meta($post_id, $revision_id): void {
+    public function _wp_restore_post_revision_meta($post_id, $revision_id): void
+    {
 
         $partent_post_type = get_post_type($post_id);
         $revision_meta_fields = apply_filters('rswpmr_revision_meta_fields', array());
@@ -98,7 +108,8 @@ class MetaRevisions {
         }
     }
 
-    final public function _wp_check_revisioned_meta_fields_have_changed($post_has_changed, \WP_Post $last_revision, \WP_Post $post): bool {
+    final public function _wp_check_revisioned_meta_fields_have_changed($post_has_changed, \WP_Post $last_revision, \WP_Post $post): bool
+    {
         $post_type = get_post_type($post->ID);
         $revision_meta_fields = apply_filters('rswpmr_revision_meta_fields', array());
 
@@ -118,7 +129,8 @@ class MetaRevisions {
         return $post_has_changed;
     }
 
-    final public function _wp_post_revision_fields($fields, $autosave) {
+    final public function _wp_post_revision_fields($fields, $autosave)
+    {
         $post_type = $autosave['post_type'];
 
         $revision_meta_fields = apply_filters('rswpmr_revision_meta_fields', array());
